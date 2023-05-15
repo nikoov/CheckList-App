@@ -1,90 +1,37 @@
 # CheckList-App
 CheckList-App is a simple to do list app where you can keep track of your daily tasks.This project is inspired from another project on github.
-import tkinter as tk
-import tkinter.messagebox
-import pickle
+# ToDo App
 
-main_window = tk.Tk()
-main_window.title("My CheckList App")
+This is a simple Todo app to keep track of your daily tasks.
+This project is inspired from another project on github. 
 
-main_window.resizable(height=False, width=False)
+Here is the liknk to that project:
+[The github link](https://github.com/wynand1004/Projects/blob/master/To-Do-List/)
 
-def add_task():
-    task = entry_task.get()
-    if task != "":
-         tasks_listbox.insert(tkinter.END, task)
-         entry_task.delete(0, tkinter .END)
+## How to use
 
-    else:
-     tkinter.messagebox.showwarning(title="Warning!" , message= "You must enter a task")
+Download the zip file From the download link, Open and extract the folder inside. Open a comand line terminal inside that folder, type "python todo.py" and hit the Enter key on your keboard to run the app. 
 
-def delete_task():
-     try:
-           task_index = tasks_listbox.curselection()[0]
-           tasks_listbox.delete(task_index)
+## Minimum requirement
 
-     except:
-           tkinter.messagebox.showwarning(title="Warning!" , message= "You must select a task first")
+This app needs python3 to be installed on your computer. 
 
+##Development
+Future updates will include support for having multiple todo lists at once. 
+you can test the dev version of the app in the DevVersion folder. 
 
-def load_tasks():
-     try:
-          tasks = pickle.load(open("tasks.dat" , "rb"))
-          tasks_listbox.delete(0, tkinter.END)
-          for task in tasks:
-           tasks_listbox.insert(tkinter.END, task)
+### Future updates
 
-     except:
-          tkinter.messagebox.showwarning(title="Warning!" , message= "No data file found")
+1. Multiple Check lists
 
+2. Syncing with GoogleDrive 
 
-def save_tasks():
-     tasks  = tasks_listbox.get(0, tasks_listbox.size())
-     pickle.dump(tasks, open("tasks.dat" , "wb"))
+3. Timed check list tasks 
 
-lists_frame = tk.Frame(master=main_window, width=250, height=400)
-lists_frame.pack(fill=tk.Y, side=tk.LEFT)
-lists_frame.pack_propagate(0)
-task_frame = tk.Frame(master=main_window, width=250, height=400)
-task_frame.pack(fill=tk.Y, side=tk.LEFT)
-task_frame.pack_propagate(0)
+4. Adding Subtasks to each task
 
-controls_frame = tk.Frame(master=main_window, width=250)
-controls_frame.pack()
+### Notes
 
-list_title_label = tk.Label(text="My todo Lists", master=lists_frame)
-list_title_todo = tk.Label(text="My tasks", master=task_frame)
-controls_title_label = tk.Label(text="controls", master=controls_frame)
-
-list_title_label.pack()
-list_title_todo.pack()
-controls_title_label.pack()
-
-lists_listbox = tk.Listbox(lists_frame, height=10, width=50)
-
-lists_listbox.pack()
-
-tasks_listbox = tk.Listbox(task_frame, height=10, width=50)
-tasks_listbox.pack()
-
-scrollbar_tasks = tkinter.Scrollbar(task_frame)
-scrollbar_lists = tk.Scrollbar(lists_frame)
-
-scrollbar_tasks.pack(side=tkinter .RIGHT, fill=tkinter .Y)
-scrollbar_lists.pack(side=tkinter .RIGHT, fill=tkinter .Y)
-
-entry_task = tkinter.Entry(main_window, width=50)
-entry_task.pack()
-
-button_add_task = tkinter.Button (main_window, text="Add task" , width=48, command=add_task)
-button_add_task.pack()
-
-button_delete_task = tkinter.Button (main_window, text="Delete task" , width=48, command= delete_task)
-button_delete_task.pack()
-
-button_save_tasks = tkinter.Button (main_window, text="Save tasks" , width=48, command=save_tasks)
-button_save_tasks.pack()
-
-button_load_tasks = tkinter.Button (main_window, text="Load tasks" , width=48, command=load_tasks)
-button_load_tasks.pack()
-main_window.mainloop()
+* The Dev Version of app is not fully stable and may have bugs.
+It is not currently suitable to be used for daily use. 
+* There are some bugs in the dev version of the app and some features are not fully inplemented yet.
